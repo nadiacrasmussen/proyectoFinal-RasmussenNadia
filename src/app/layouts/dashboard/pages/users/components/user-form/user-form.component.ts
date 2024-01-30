@@ -14,8 +14,8 @@ export class UserFormComponent {
 
   constructor ( private fb:FormBuilder) {
     this.userForm = this.fb.group({
-        nombre: this.fb.control('',Validators.required),
-        apellido: this.fb.control('',Validators.required),
+        firstName: this.fb.control('',Validators.required),
+        lastName: this.fb.control('',Validators.required),
         email: this.fb.control('',Validators.required),
        password: this.fb.control('',Validators.required),
         role: this.fb.control('',Validators.required)
