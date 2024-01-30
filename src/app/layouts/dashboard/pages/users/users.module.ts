@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
@@ -7,16 +8,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../../../shared/shared.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
-  declarations: [
-    UsersComponent,UsersComponent, UserFormComponent,
+  declarations:[UsersComponent,UserFormComponent],
+  imports:[CommonModule,SharedModule,PipesModule, MatTableModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatButtonModule,ReactiveFormsModule,FormsModule
   ],
-  imports: [
-    CommonModule, MatTableModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatButtonModule,ReactiveFormsModule
-  ],
-  exports:[UsersComponent
-  ],
+exports:[UsersComponent]
 })
-export class UsersModule { }
+export class UsersModule{};
