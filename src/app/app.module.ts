@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './layouts/dashboard/dashboard.module';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -14,9 +15,14 @@ import { DashboardModule } from './layouts/dashboard/dashboard.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DashboardModule
+    DashboardModule,
+   MatFormFieldModule
   ],
-  providers: [],
+  providers: [
+    {provide:  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+       useValue: {appearance: 'outline'},
+      },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

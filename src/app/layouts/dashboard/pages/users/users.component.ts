@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {user} from './models';
+import  {UsersService}from '../../../../core/service/users.service';
+
 
 @Component({
   selector: 'app-users',
@@ -42,6 +44,8 @@ export class UsersComponent {
       role:'alumno'
      }
   ];
+
+constructor(private UsersService:UsersService){}
   onUserSubmitted(ev:user):void{
 
     this.dataSource=[...this.dataSource,{...ev,id:new Date().getTime()}];

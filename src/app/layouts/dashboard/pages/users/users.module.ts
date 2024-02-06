@@ -11,11 +11,19 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../../../shared/shared.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { UsersService } from '../../../../core/service/users.service';
+import { UserMockService } from '../../../../core/service/users-mock.service';
 
 @NgModule({
   declarations:[UsersComponent,UserFormComponent],
   imports:[CommonModule,SharedModule,PipesModule, MatTableModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatButtonModule,ReactiveFormsModule,FormsModule
   ],
-exports:[UsersComponent]
+exports:[UsersComponent],
+providers:[
+  {
+    provide: UsersService,
+    useClass:UserMockService
+  }
+]
 })
 export class UsersModule{};
