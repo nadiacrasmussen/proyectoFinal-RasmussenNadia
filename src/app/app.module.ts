@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './layouts/dashboard/dashboard.module';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
+import { PagesDetailsComponent } from './layouts/dashboards/pages/users/pages-details/pages-details.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PagesDetailsComponent
   ],
   imports: [
     BrowserModule,

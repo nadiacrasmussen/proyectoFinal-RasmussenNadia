@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,5 +8,12 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   showFiller = false;
+
+  constructor(private router : Router, private route:ActivatedRoute) {}
+  logout():void{
+    localStorage.removeItem('access-token');
+    this.router.navigate(['auth','login']);
+
+  }
 
 }

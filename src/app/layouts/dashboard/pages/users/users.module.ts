@@ -13,16 +13,22 @@ import { SharedModule } from '../../../../shared/shared.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { UsersService } from '../../../../core/service/users.service';
 import { UserMockService } from '../../../../core/service/users-mock.service';
+import {MatIconModule} from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations:[UsersComponent,UserFormComponent],
   imports:[CommonModule,SharedModule,PipesModule, MatTableModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatButtonModule,ReactiveFormsModule,FormsModule
-  ],
+    ,MatIconModule,RouterModule ],
 exports:[UsersComponent],
 providers:[
   {
     provide: UsersService,
     useClass:UserMockService
+  },
+  {
+    provide: 'USER_TOKEN',
+    useValue:'1234'
   }
 ]
 })

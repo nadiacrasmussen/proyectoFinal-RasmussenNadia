@@ -33,6 +33,18 @@
     <td mat-cell *matCellDef="let user"> {{user.role}} </td>
   </ng-container>
 
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <td mat-cell *matCellDef="let user">
+    <button [routerLink]="user.id" color="accent" mat-icon-button>
+      <mat-icon>visibility</mat-icon>
+    </button>
+    <button  mat-icon-button color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+    </td>
+  </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
