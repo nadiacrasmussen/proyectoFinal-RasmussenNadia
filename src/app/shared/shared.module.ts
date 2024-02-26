@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FullNamePipe } from './full-name.pipe';
 import { FontSizeDirective } from './font-size.directive';
-import { UsersComponent } from '../layouts/dashboard/pages/users/users.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,9 +15,10 @@ import { UsersComponent } from '../layouts/dashboard/pages/users/users.component
 FontSizeDirective
   ],
   imports: [
-    CommonModule,
+    CommonModule,MatTableModule,MatIconModule,MatFormFieldModule
   ],
-exports:[FontSizeDirective]
+exports:[FontSizeDirective,MatTableModule,MatIconModule,MatCardModule,MatFormFieldModule  ,ReactiveFormsModule,
+]
 
 })
 export class SharedModule { }

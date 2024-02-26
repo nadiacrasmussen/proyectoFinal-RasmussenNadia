@@ -1,53 +1,29 @@
-import { Component } from '@angular/core';
-import {user} from './models';
-import  {UsersService}from '../../../../core/service/users.service';
-
+import { Component, OnInit,OnDestroy } from '@angular/core';
+import { UsersService } from './users.service';
+import { User } from './models';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrl: './users.component.scss'
+  styleUrl: './users.component.scss',
 })
-export class UsersComponent {
-  displayedColumns: string[] = ['id','fullName',  'email', 'role'];
-  dataSource: user[]=[
-     {
-      id: 1,
-      firstName:'Nadia',
-      lastName: 'Rasmussen',
-      email: 'nadiacrasmussen@gmail.com',
-      password: 'nadia123',
-      role:'alumno'
-     },
-     {
-      id:2 ,
-      firstName:'Daiana',
-      lastName: 'Marquez',
-      email: 'daimarquez@gmail.com',
-      password: 'dai1548',
-      role:'alumno'
-     },
-     {
-      id: 3,
-      firstName:'Micaela',
-      lastName: 'Ramirez',
-      email: 'ramirezmica@gmail.com',
-      password: 'lulurami',
-      role:'alumno'
-     },
-     {
-      id: 4,
-      firstName:'Julieta',
-      lastName: 'Zagame',
-      email: 'julizagame@gmail.com',
-      password: 'julieta55',
-      role:'alumno'
-     }
-  ];
+export class UsersComponent implements OnInit, OnDestroy {
+  displayedColumns: string[] = ['id', 'fullName', 'email', 'role', 'actions'];
+  subscription!: Subscription;
+  dataSource: User[] = [];
 
-constructor(private UsersService:UsersService){}
-  onUserSubmitted(ev:user):void{
-
-    this.dataSource=[...this.dataSource,{...ev,id:new Date().getTime()}];
+  constructor(private usersService: UsersService) {}
+  ngOnInit(): void {
+  /*  this.subscription = this.usersService.getUsers().subscribe((users) => {
+      this.dataSource = users;
+    });*/
   }
+  ngOnDestroy():void{
+    this.subscription.unsubscribe();
+  }
+  onUserSubmitted(ev: User): void {
+    this.dataSource = [...this.dataSource, { ...ev, id: new Date().getTime() }];
+  }
+  onDeleteUser(ev: User): void {}
 }

@@ -34,11 +34,15 @@
   </ng-container>
 
   <ng-container matColumnDef="actions">
+
     <th mat-header-cell *matHeaderCellDef>Acciones</th>
-    <td mat-cell *matCellDef="let user">
-    <button [routerLink]="user.id" color="accent" mat-icon-button>
+
+
+
+    <button  color="accent" mat-icon-button>
       <mat-icon>visibility</mat-icon>
     </button>
+    <td mat-cell *matCellDef="let user">
     <button  mat-icon-button color="warn">
       <mat-icon>delete</mat-icon>
     </button>

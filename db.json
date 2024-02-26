@@ -1,0 +1,36 @@
+{
+  "users":[
+    {
+     "id": 1,
+     "firstName":"Nadia",
+      "lastName": "Rasmussen",
+      "email": "nadiacrasmussen@gmail.com",
+      "password": "nadia123",
+      "role":"alumno"
+     },
+     {
+      "id":2 ,
+     " firstName":"Daiana",
+      "lastName":" Marquez",
+      "email": "daimarquez@gmail.com",
+      "password": "dai1548",
+      "role":"alumno"
+     },
+     {
+      "id": 3,
+     "firstName":"Micaela",
+     "lastName": "Ramirez",
+      "email": "ramirezmica@gmail.com",
+      "password": "lulurami",
+      "role":"alumno"
+     },
+     {
+      "id": 4,
+      "firstName":"Julieta",
+      "lastName": "Zagame",
+      "email": "julizagame@gmail.com",
+      "password": "julieta55",
+      "role":"alumno'"
+     }
+  ]
+}

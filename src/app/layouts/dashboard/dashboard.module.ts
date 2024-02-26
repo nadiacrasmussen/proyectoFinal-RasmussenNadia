@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
@@ -8,9 +9,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { UsersModule } from './pages/users/users.module';
 import { RouterModule } from '@angular/router';
 import {MatListModule} from '@angular/material/list';
-import { UsersComponent } from './pages/users/users.component';
 import { HomeComponent } from './pages/home/home.component';
-import { PagesDetailsComponent } from '../dashboards/pages/users/pages-details/pages-details.component';
+import { adminGuard } from '../../core/guards/admin.guard';
 
 @NgModule({
   declarations: [
@@ -26,18 +26,20 @@ import { PagesDetailsComponent } from '../dashboards/pages/users/pages-details/p
 MatListModule,
 RouterModule.forChild([
   {
-    path:' ',
-    component:HomeComponent
+    path:'',
+    component:DashboardComponent
   },
   {
-    path:'users',
-    component:UsersComponent
+    path:'user',
+    canActivate:[adminGuard],
+    loadChildren:()=>
+    import('./pages/users/users.module').then((m) => m.UsersModule)
   },
   {
-    path:'users/:id',
-    component:PagesDetailsComponent
-  }
-
+    path:'cursos',
+    loadChildren:()=>
+    import('./pages/cursos/cursos.module').then((m) => m.CursosModule)
+  },
 ])
   ],
   exports:[DashboardComponent,]
