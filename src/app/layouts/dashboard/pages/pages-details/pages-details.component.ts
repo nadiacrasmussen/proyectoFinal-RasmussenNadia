@@ -1,31 +1,33 @@
 import { Component } from '@angular/core';
-import { Observable, Subscriber } from 'rxjs';
+import { Observable, Subscriber, Subscription } from 'rxjs';
 import { loadingService } from '../../../../core/service/loading.service';
-
+import { User } from '../users/models';
+import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'app-pages-details',
   templateUrl: './pages-details.component.html',
-  styleUrl: './pages-details.component.scss'
+  styleUrl: './pages-details.component.scss',
 })
 export class PagesDetailsComponent {
-  constructor( private loadingService :loadingService){
-
+  subscription!: Subscription;
+  usuarios!: User[];
+  constructor(
+    private loadingService: loadingService,
+    private usersService: UsersService
+  ) {
     this.getUsuarios();
-      }
-      getUsuarios() : void{
-        const obs = new Observable((Subscriber)=>{
-          setTimeout(()=>{ Subscriber.next(['nadia,micaela,sofia'])
-        Subscriber.complete();
-        },2000)
-          });
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
-    this.loadingService.setIsLoading(true);
-         obs.subscribe({
-          next: (usuarios) => console.log(usuarios),
-          complete:()=>{
-            this.loadingService.setIsLoading(false)
-          },
-         })
-
-}}
+  getUsuarios(): void {
+    this.subscription = this.usersService
+      .getUsers()
+      .subscribe((data: User[]) => {
+        this.usuarios = data;
+        this.loadingService.setIsLoading(true);
+      });
+  }
+}

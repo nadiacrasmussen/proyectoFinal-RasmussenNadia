@@ -9,11 +9,8 @@ import { PagesDetailsComponent } from '../pages-details/pages-details.component'
  {
   path:'',
   component:UsersComponent,
- },
- {
-  path:':id',
-  component:PagesDetailsComponent,
- }])
+ }
+])
   ],
   exports:[RouterModule]
 })

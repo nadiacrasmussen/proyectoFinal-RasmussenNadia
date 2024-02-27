@@ -1,8 +1,8 @@
 export interface cursos{
 id:number;
 nombre:string;
-fechaDeInicio:Date;
-fechaDeFin:Date;
+fechaDeInicio:string;
+fechaDeFin:string;
 horario: string;
 duracion: string;
 }

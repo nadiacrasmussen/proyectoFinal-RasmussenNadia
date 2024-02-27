@@ -31,9 +31,12 @@ import { UserRoutingModule } from './user-routing.module';
     MatIconModule,
     RouterModule,
     UserRoutingModule,
+
+
   ],
   exports: [UsersComponent],
   providers: [
+    UsersService,
 
     {
       provide: 'USER_TOKEN',

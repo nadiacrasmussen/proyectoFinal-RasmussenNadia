@@ -7,7 +7,7 @@ import { DashboardModule } from './layouts/dashboard/dashboard.module';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { loadingService } from './core/service/loading.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {  HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
@@ -32,7 +32,8 @@ import { RouterModule } from '@angular/router';
     {provide:  MAT_FORM_FIELD_DEFAULT_OPTIONS,
        useValue: {appearance: 'outline'},
 
-      }, loadingService,
+      },
+       loadingService,
   ],
   bootstrap: [AppComponent]
 })

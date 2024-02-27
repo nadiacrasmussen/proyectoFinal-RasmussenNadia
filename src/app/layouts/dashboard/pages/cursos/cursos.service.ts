@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { cursos } from './models/index';
 import { of } from "rxjs";
 
-let curso : cursos[] = [
+let curso : cursos[] /*= [
   {
   id:1,
   nombre:'Instructurado de preparacion fisica deportiva',
@@ -15,7 +15,7 @@ let curso : cursos[] = [
     id:1,
     nombre:'Capacitacion de Nutricion en deportiva',
      fechaDeInicio: new Date('04/04/2024'),
-     fechaDeFin:new Date('30/06/2024'),
+     fechaDeFin:('30/06/2024'),
      horario: 'Martes y Jueves 15.30hs a 20.30hs',
      duracion: '2 Meses'
     },
@@ -34,8 +34,8 @@ let curso : cursos[] = [
          fechaDeFin:new Date('25/10/2024'),
          horario: 'Lunes, Miercoles y viernes de 15hs a 19hs',
          duracion: '4 Meses'
-        }
-]
+        }*/
+
 
  @Injectable()
 export class cursosService{

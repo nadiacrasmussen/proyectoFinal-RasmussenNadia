@@ -4,8 +4,8 @@ import { User } from '../../dashboard/pages/users/models';
 import { Router } from '@angular/router';
 
 interface loginData {
-  email: null | string;
-  password: null | string;
+  email: string | null;
+  password:  string | null;
 }
 const MOCK_USER = {
   id: 1,
@@ -18,13 +18,17 @@ const MOCK_USER = {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  public static authUser: User | null = null;
+  authUser!: User | null ;
   constructor(private Router: Router) {}
 
   private setAuthUser(mockUser: User): void {
-    AuthService.authUser = mockUser;
+    this.authUser = mockUser;
     localStorage.setItem('token', 'ms1503');
   }
+  get userAuthenticated(){
+    return this.authUser;
+  }
+
   login(data: loginData): void {
     console.log(data);
     console.log({MOCK_USER})
@@ -32,16 +36,17 @@ export class AuthService {
       data.email == MOCK_USER.email &&
       data.password == MOCK_USER.password
     ) {
-      AuthService.authUser = MOCK_USER;
-      this.setAuthUser(MOCK_USER);
-      this.Router.navigateByUrl('/home');
+      this.authUser = MOCK_USER;
+      this.setAuthUser(this.authUser);
+      this.Router.navigateByUrl('/dashboard/home');
     }
   }
 
   logout(): void {
-    AuthService.authUser = null;
-    this.Router.navigate(['/auth/login']);
+    this.authUser = null;
     localStorage.removeItem('token');
+    this.Router.navigate(['/auth/login']);
+
   }
 
   verifyToken() {

@@ -2,6 +2,7 @@ import { Injectable, Pipe } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './models';
 import { Observable, delay, mergeMap, of, tap } from 'rxjs';
+import { enviroment } from '../../../../../enviroments/enviroments';
 
 let USERS_DB: User[] = [];
 let ROLES_DB: String[] = ['ADMIN', 'USER'];
@@ -15,16 +16,20 @@ export class UsersService {
     return of(ROLES_DB).pipe(delay(1000));
   }
   getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>('http://localhost:3000/users');
+    return this.httpClient.get<User[]>(`${enviroment.apiUrl}/users`);
   }
 
   createUser(payload: User) {
     return this.httpClient.post<User>(
-      'http://localhost:3000/users',
+      `${enviroment.apiUrl}/users`,
       payload
     ).pipe(mergeMap(() => this.getUsers()));
+
   }
 
+  updateUser(user:User){
+    return this.httpClient.put(`${enviroment.apiUrl}/users/${user.id}`,{user});
+  }
   deleteUser(userID: Number) {
     USERS_DB = USERS_DB.filter((User) => User.id !== userID);
     return this.getUsers().pipe(
